@@ -1,0 +1,34 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.brs.model.Users" table="users">
+        <id name="userId" type="java.lang.String">
+            <column name="userId" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name" length="255"  />
+        </property>
+        <property name="password" type="java.lang.String">
+        	<column name="password" length="36" not-null="true" />
+        </property>
+        <property name="sex" type="java.lang.String">
+        	<column name="sex" length="36" />
+        </property>
+        <property name="tel" type="java.lang.String">
+        	<column name="tel" length="255" />
+        </property>
+        <property name="email" type="java.lang.String">
+        	<column name="email" length="255" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+        	<column name="status" length="1" not-null="true" />
+        </property>
+        <set name="rental">
+        	<!-- key指定关联的外键列 -->
+        	<key column="userId"/>
+        	<one-to-many class="com.brs.model.Rental"/>
+        </set>
+        <many-to-one name="imgs" class="com.brs.model.Imgs" column="imgId"/>
+    </class>
+</hibernate-mapping>

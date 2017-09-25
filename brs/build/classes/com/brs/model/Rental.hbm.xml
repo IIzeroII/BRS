@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.brs.model.Rental" table="rental">
+        <id name="id" type="java.lang.String">
+            <column name="id" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="startDate" type="java.sql.Timestamp">
+        	<column name="startDate"  not-null="true" ></column>
+        </property>
+        <property name="endDate" type="java.sql.Timestamp">
+        	<column name="endDate"  not-null="true"></column>
+        </property>
+        <property name="number" type="java.lang.Integer">
+        	<column name="number" length="36"  not-null="true"></column>
+        </property>
+        <property name="status" type="java.lang.Integer">
+        	<column name="status" length="1"  not-null="true"></column>
+        </property>
+        <many-to-one name="users" class="com.brs.model.Users" column="userId"/>
+        <many-to-one name="bicycle" class="com.brs.model.Bicycle" column="bicId"/>
+    </class>
+</hibernate-mapping>

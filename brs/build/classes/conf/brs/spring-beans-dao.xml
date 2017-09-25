@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+">
+	<!-- 全局dao配置 -->
+	<bean id="baseDao" class="com.brs.dao.impl.BaseDao">
+		<!-- sessionFactory是针对数据库操作的会话,与服务器会话不同 -->
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<!-- 前台dao配置 -->
+	<bean id="adminsDao" class="com.brs.dao.impl.AdminsDao" parent="baseDao">
+	</bean>	
+	<bean id="bicycleDao" class="com.brs.dao.impl.BicycleDao" parent="baseDao">
+	</bean>	
+	<bean id="imgsDao" class="com.brs.dao.impl.ImgsDao" parent="baseDao">
+	</bean>	
+	<bean id="rentalDao" class="com.brs.dao.impl.RentalDao" parent="baseDao">
+	</bean>	
+	<bean id="usersDao" class="com.brs.dao.impl.UsersDao" parent="baseDao">
+	</bean>	
+	
+	
+</beans>

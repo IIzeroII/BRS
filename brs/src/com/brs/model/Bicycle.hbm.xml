@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.brs.model.Bicycle" table="bicycle">
+		<id name="bicId" type="java.lang.String">
+			<column name="bicId" length="36" />
+			<generator class="assigned" />
+		</id>
+		<property name="type" type="java.lang.String">
+			<column name="type" length="255" not-null="true" unique="true" />
+		</property>
+		<property name="price" type="java.lang.Integer">
+			<column name="price" length="36" not-null="true" />
+		</property>
+		<property name="status" type="java.lang.Integer">
+			<column name="status" length="1" not-null="true" />
+		</property>
+		<set name="rental">
+			<key column="bicId" />
+			<one-to-many class="com.brs.model.Rental" />
+		</set>
+		<many-to-one name="imgs" class="com.brs.model.Imgs" column="imgId" />
+		
+	</class>
+</hibernate-mapping>
